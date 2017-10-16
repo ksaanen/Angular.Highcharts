@@ -15,7 +15,10 @@ export class AppComponent {
     colors: ['#2f7ed8', '#0d233a', '#8bbc21', '#910000', '#1aadce', '#492970', '#f28f43', '#77a1e5', '#c42525', '#a6c96a'],
     plotOptions: {
       series: {
-        lineWidth: 3
+        lineWidth: 3,
+        marker: {
+          enabled: false
+        }
       }
     },
     credits: {
@@ -23,7 +26,7 @@ export class AppComponent {
     }
   };
 
-  randomScalingFactor = function(){
+  randomNumber = function(){
     function getRandomInt(min, max) {
       min = Math.ceil(min);
       max = Math.floor(max);
@@ -32,29 +35,83 @@ export class AppComponent {
     return getRandomInt(0, 120);
   };
 
-  randomizeData = function() {
-    this.myID1.dataSets.forEach(function(dataset) {
-      dataset.data = dataset.data.map(function() {
-        return this.randomScalingFactor;
-      });
-    });
-    this.myID2.dataSets.forEach(function(dataset) {
-      dataset.data = dataset.data.map(function() {
-        return this.randomScalingFactor;
-      });
-    });
-    this.myID3.dataSets.forEach(function(dataset) {
-      dataset.data = dataset.data.map(function() {
-        return this.randomScalingFactor;
-      });
-    });
-  };
+  dataSet1 = [
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber()
+  ];
+  dataSet2 = [
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber()
+  ];
+  dataSet3 = [
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber()
+  ];
+  dataSet4 = [
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber()
+  ];
+  dataSet5 = [
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber()
+  ];
+  dataSet6 = [
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber(),
+    this.randomNumber()
+  ];
 
-  dataSet1 = [this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor()];
-  dataSet2 = [this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor()];
-  dataSet3 = [this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor()];
-  dataSet4 = [this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor()];
-  dataSet5 = [this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor()];
-  dataSet6 = [this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor(), this.randomScalingFactor()];
-  
 }

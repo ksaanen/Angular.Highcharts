@@ -30,6 +30,11 @@ export class HighchartsYAxisComponent implements AfterContentInit, OnDestroy {
   }
 
   @Input()
+  set categories(array: Array<any>) {
+    this.YAxis.categories = array;
+  }
+
+  @Input()
   set label(value: string){
     this.YAxis.title.text = value;
   }

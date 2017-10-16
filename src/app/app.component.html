@@ -1,29 +1,40 @@
 <h1>{{title}}</h1>
 
 <h2>Line chart</h2>
-<highcharts #myID1 [labels]="labels" [config]="global_configuration">
-  <highcharts-data label="4" [data]="dataSet1" type="spline" color="#815f86"></highcharts-data>
-  <highcharts-data label="1" [data]="dataSet2" type="spline" color="#fff584"></highcharts-data>
-  <highcharts-data label="2" [data]="dataSet3" type="spline" color="#f59695"></highcharts-data>
-  <highcharts-data label="3" [data]="dataSet4" type="spline" color="rgba(129,95,134,.2)"></highcharts-data>
+
+<highcharts #myID1 [labels]="labels" [config]="global_configuration" title="spline graph">
+  <highcharts-axes>
+    <highcharts-xaxis label="abc" id="myXAxis" [categories]="labels" [visible]="true"></highcharts-xaxis>
+    <highcharts-yaxis label="nummers" id="myYAxis" [visible]="true"></highcharts-yaxis>
+  </highcharts-axes>
+  <highcharts-data name="4" [data]="dataSet1" type="spline" color="#815f86"></highcharts-data>
+  <highcharts-data name="1" [data]="dataSet2" type="spline" color="#fff584"></highcharts-data>
+  <highcharts-data name="2" [data]="dataSet3" type="spline" color="#f59695"></highcharts-data>
+  <highcharts-data name="3" [data]="dataSet4" type="spline" color="rgba(129,95,134,.2)"></highcharts-data>
 </highcharts>
 
 <h2>Bars chart</h2>
-<highcharts #myID2 [labels]="labels" [config]="global_configuration">
-  <highcharts-data label="1" [data]="dataSet1" type="column" color="#fff584"></highcharts-data>
-  <highcharts-data label="2" [data]="dataSet2" type="column" color="#f59695"></highcharts-data>
+
+<highcharts #myID2 [labels]="labels" [config]="global_configuration" title="stacked bar">
+  <highcharts-axes>
+    <highcharts-xaxis label="abc" id="myXAxis" [categories]="labels" [visible]="true"></highcharts-xaxis>
+    <highcharts-yaxis label="nummers" id="myYAxis" [visible]="true"></highcharts-yaxis>
+  </highcharts-axes>
+  <highcharts-data name="1" stack="set1" [data]="dataSet1" type="column" color="#fff584"></highcharts-data>
+  <highcharts-data name="2" stack="set1" [data]="dataSet2" type="column" color="#f59695"></highcharts-data>
 </highcharts>
 
 <h2>Mixed chart</h2>
-<highcharts #myID3 [labels]="labels" [config]="global_configuration">
+
+<highcharts #myID3 [labels]="labels" [config]="global_configuration" title="mixed graph">
   <highcharts-axes>
-    <highcharts-xaxis label="bla" id="myXAxis" [visible]="true"></highcharts-xaxis>
+    <highcharts-xaxis label="bla" id="myXAxis" [categories]="labels" [visible]="true"></highcharts-xaxis>
     <highcharts-yaxis label="bla3" id="myYAxis1" [visible]="true"></highcharts-yaxis>
   </highcharts-axes>
 
-  <highcharts-data label="4" [data]="dataSet1" stack="set1" type="column" color="#815f86"></highcharts-data>
-  <highcharts-data label="1" [data]="dataSet2" stack="set1" type="column" color="#fff584"></highcharts-data>
-  <highcharts-data label="2" [data]="dataSet3" stack="set1" type="column" color="#f59695"></highcharts-data>
-  <highcharts-data *ngIf="show" label="Gewenst inkomen" [data]="dataSet5" pointRadius="0" color="rgba(129,95,134,.2)" borderWidth="3" type="line"></highcharts-data>
-  <highcharts-data *ngIf="show" label="Inkomen" [data]="dataSet6" pointRadius="0" color="rgba(129,95,134,.2)" borderWidth="3" type="line"></highcharts-data>
+  <highcharts-data name="4" [data]="dataSet1" stack="set1" type="column" color="#815f86"></highcharts-data>
+  <highcharts-data name="1" [data]="dataSet2" stack="set1" type="column" color="#fff584"></highcharts-data>
+  <highcharts-data name="2" [data]="dataSet3" stack="set1" type="column" color="#f59695"></highcharts-data>
+  <highcharts-data *ngIf="show" name="Gewenst inkomen" [data]="dataSet5" color="rgba(129,95,134,.2)" type="line"></highcharts-data>
+  <highcharts-data *ngIf="show" name="Inkomen" [data]="dataSet6" color="rgba(129,95,134,.2)" type="line"></highcharts-data>
 </highcharts>

@@ -19,6 +19,11 @@ export class HighchartsComponent implements AfterContentInit {
     this.chartService.config = value;
   }
 
+  @Input()
+  set title(value: string) {
+    this.chartService.title = value;
+  }
+
   constructor(private elementRef: ElementRef, private chartService: HighchartsService) {}
 
   ngAfterContentInit() {

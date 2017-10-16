@@ -4,7 +4,9 @@ import * as Highcharts from 'highcharts';
 @Injectable()
 export class HighchartsService {
   private chartObject: Highcharts.ChartObject;
-  private options: Highcharts.Options = {};
+  private options: Highcharts.Options = {
+    title: {}
+  };
   private series: Array<Object> = [];
 
   initChart(ctx: string) {
@@ -46,6 +48,10 @@ export class HighchartsService {
 
   set config(value: Highcharts.Options) {
     Object.assign(this.options, value);
+  }
+
+  set title(value: string) {
+    this.options.title.text = value;
   }
 
   private updateChart() {

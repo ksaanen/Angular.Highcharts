@@ -40,6 +40,11 @@ export class HighchartsDataComponent implements OnInit, OnDestroy {
     this.seriesObject.xAxis = value;
   }
 
+  @Input()
+  set title(value: string) {
+    this.seriesObject.title = value;
+  }
+
   private seriesObject: Highcharts.SeriesOptions;
 
   constructor(private highchartsService: HighchartsService) {

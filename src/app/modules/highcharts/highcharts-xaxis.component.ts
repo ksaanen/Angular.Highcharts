@@ -30,6 +30,11 @@ export class HighchartsXAxisComponent implements AfterContentInit, OnDestroy {
   }
 
   @Input()
+  set categories(array: Array<any>) {
+    this.XAxis.categories = array;
+  }
+
+  @Input()
   set label(value: string){
     this.XAxis.title.text = value;
   }
