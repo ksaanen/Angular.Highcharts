@@ -41,17 +41,13 @@ export class HighchartsService {
     this.updateChart();
   }
 
-  set labels(labels: (string | string[])[]) {
-    // this.chartData.labels = labels;
-    this.updateChart();
-  }
-
   set config(value: Highcharts.Options) {
     Object.assign(this.options, value);
   }
 
   set title(value: string) {
     this.options.title.text = value;
+    this.updateChart();
   }
 
   private updateChart() {

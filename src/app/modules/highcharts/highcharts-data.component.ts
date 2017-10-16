@@ -41,8 +41,8 @@ export class HighchartsDataComponent implements OnInit, OnDestroy {
   }
 
   @Input()
-  set title(value: string) {
-    this.seriesObject.title = value;
+  set name(value: string) {
+    this.seriesObject.name = value;
   }
 
   private seriesObject: Highcharts.SeriesOptions;

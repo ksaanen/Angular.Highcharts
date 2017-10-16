@@ -2,7 +2,7 @@
 
 <h2>Line chart</h2>
 
-<highcharts #myID1 [labels]="labels" [config]="global_configuration" title="spline graph">
+<highcharts #myID1 [config]="global_configuration" title="spline graph">
   <highcharts-axes>
     <highcharts-xaxis label="abc" id="myXAxis" [categories]="labels" [visible]="true"></highcharts-xaxis>
     <highcharts-yaxis label="nummers" id="myYAxis" [visible]="true"></highcharts-yaxis>
@@ -15,7 +15,7 @@
 
 <h2>Bars chart</h2>
 
-<highcharts #myID2 [labels]="labels" [config]="global_configuration" title="stacked bar">
+<highcharts #myID2 [config]="global_configuration" title="stacked bar">
   <highcharts-axes>
     <highcharts-xaxis label="abc" id="myXAxis" [categories]="labels" [visible]="true"></highcharts-xaxis>
     <highcharts-yaxis label="nummers" id="myYAxis" [visible]="true"></highcharts-yaxis>
@@ -26,7 +26,7 @@
 
 <h2>Mixed chart</h2>
 
-<highcharts #myID3 [labels]="labels" [config]="global_configuration" title="mixed graph">
+<highcharts #myID3 [config]="global_configuration" title="mixed graph">
   <highcharts-axes>
     <highcharts-xaxis label="bla" id="myXAxis" [categories]="labels" [visible]="true"></highcharts-xaxis>
     <highcharts-yaxis label="bla3" id="myYAxis1" [visible]="true"></highcharts-yaxis>
