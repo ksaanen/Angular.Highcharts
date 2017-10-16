@@ -19,6 +19,27 @@ export class HighchartsDataComponent implements OnInit, OnDestroy {
     this.seriesObject.data = value;
   }
 
+  @Input()
+  set color(value: string) {
+    this.seriesObject.color = value;
+  }
+
+  @Input()
+  set stack(value: string) {
+    this.seriesObject.stacking = 'normal';
+    this.seriesObject.stack = value;
+  }
+
+  @Input()
+  set yAxis(value: string) {
+    this.seriesObject.yAxis = value;
+  }
+
+  @Input()
+  set xAxis(value: string) {
+    this.seriesObject.xAxis = value;
+  }
+
   private seriesObject: Highcharts.SeriesOptions;
 
   constructor(private highchartsService: HighchartsService) {
