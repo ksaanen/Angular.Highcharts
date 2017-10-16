@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { HighchartsService } from './highcharts.service';
-import * as Highcharts from 'highcharts';
 
 @Component({
   selector: 'highcharts-data',

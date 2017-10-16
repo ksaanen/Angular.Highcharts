@@ -4,7 +4,7 @@
 
 <highcharts #myID1 [config]="global_configuration" title="spline graph">
   <highcharts-axes>
-    <highcharts-xaxis label="abc" id="myXAxis" [categories]="labels" [visible]="true"></highcharts-xaxis>
+    <highcharts-xaxis label="abc" [breakStart]="3" [breakSize]="1" [breakEnd]="6" id="myXAxis" [categories]="labels" [visible]="true"></highcharts-xaxis>
     <highcharts-yaxis label="nummers" id="myYAxis" [visible]="true"></highcharts-yaxis>
   </highcharts-axes>
   <highcharts-data name="4" [data]="dataSet1" type="spline" color="#815f86"></highcharts-data>

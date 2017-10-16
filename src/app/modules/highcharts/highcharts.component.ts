@@ -1,6 +1,9 @@
 import { Component, Input, ElementRef, AfterContentInit } from '@angular/core';
-import { Chart } from 'highcharts';
 import { HighchartsService } from './highcharts.service';
+import * as Highcharts from 'highcharts';
+
+// import required axis break module
+require('highcharts/modules/broken-axis.js')(Highcharts);
 
 @Component({
   selector: 'highcharts',

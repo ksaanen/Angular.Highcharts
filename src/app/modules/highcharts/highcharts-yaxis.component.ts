@@ -1,6 +1,5 @@
 import { Component, Input, AfterContentInit, OnDestroy } from '@angular/core';
 import { HighchartsService } from './highcharts.service';
-import { Chart } from 'highcharts';
 
 @Component({
   selector: 'highcharts-yaxis',
@@ -27,6 +26,21 @@ export class HighchartsYAxisComponent implements AfterContentInit, OnDestroy {
   @Input()
   set floor(value: number){
     this.YAxis.floor = value;
+  }
+
+  @Input()
+  set breakStart(value: number) {
+    this.YAxis.breaks[0].from = value;
+  }
+
+  @Input()
+  set breakEnd(value: number) {
+    this.YAxis.breaks[0].to = value;
+  }
+
+  @Input()
+  set breakSize(value: number) {
+    this.YAxis.breaks[0].breakSize = value;
   }
 
   @Input()
