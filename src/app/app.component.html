@@ -1,7 +1,7 @@
 <h1>{{title}}</h1>
 
 <h2>Line chart</h2>
-<highcharts #myID1 [labels]="labels">
+<highcharts #myID1 [labels]="labels" [config]="global_configuration">
   <highcharts-data label="4" [data]="dataSet1" type="line" backgroundColor="transparent" fill="0"></highcharts-data>
   <highcharts-data label="1" [data]="dataSet2" type="line" backgroundColor="transparent" fill="0"></highcharts-data>
   <highcharts-data label="2" [data]="dataSet3" type="line" backgroundColor="transparent" fill="0"></highcharts-data>
@@ -9,13 +9,13 @@
 </highcharts>
 
 <h2>Bars chart</h2>
-<highcharts #myID2 [labels]="labels">
+<highcharts #myID2 [labels]="labels" [config]="global_configuration">
   <highcharts-data label="1" [data]="dataSet1" type="bar" backgroundColor="#fff584"></highcharts-data>
   <highcharts-data label="2" [data]="dataSet2" type="bar" backgroundColor="#f59695"></highcharts-data>
 </highcharts>
 
 <h2>Mixed chart</h2>
-<highcharts #myID3 [labels]="labels" [config]="myChartConfig">
+<highcharts #myID3 [labels]="labels" [config]="global_configuration">
   <highcharts-axes>
     <highcharts-xaxis label="bla" id="myXAxis" [visible]="true"></highcharts-xaxis>
     <highcharts-yaxis label="bla3" id="myYAxis2" [floor]="0" [ceiling]="120" [visible]="true"></highcharts-yaxis>

@@ -44,7 +44,7 @@ export class HighchartsService {
     this.updateChart();
   }
 
-  set config(value: Object) {
+  set config(value: Highcharts.Options) {
     Object.assign(this.options, value);
   }
 

@@ -15,7 +15,7 @@ export class HighchartsComponent implements AfterContentInit {
   }
 
   @Input()
-  set config(value: Object) {
+  set config(value: Highcharts.Options) {
     this.chartService.config = value;
   }
 

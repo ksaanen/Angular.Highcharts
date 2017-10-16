@@ -10,21 +10,10 @@ export class AppComponent {
   title = 'app loaded!';
   labels = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't'];
 
-  myChartConfig = {
-    animation: {
-      duration:300
-    },
-    legend: {
-      display: false
-    },
-    tooltips: {
-      mode: 'dataset',
-      intersect: true,
-      position: 'average'
-    },
-    categoryWidth: 1,
-    ticks: {
-      mirror: true
+  // shared configuration options.
+  global_configuration = {
+    credits: {
+      enabled: false
     }
   };
 
