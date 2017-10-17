@@ -14,18 +14,22 @@ export class HighchartsComponent implements AfterContentInit {
 
   @Input()
   set config(value: Highcharts.Options) {
-    this.chartService.config = value;
+    this.highchartsService.config = value;
   }
 
   @Input()
-  set title(value: string) {
-    this.chartService.title = value;
+  set title(value: Highcharts.TitleOptions) {
+    this.highchartsService.title = value;
   }
 
-  constructor(private elementRef: ElementRef, private chartService: HighchartsService) {}
+  constructor(private elementRef: ElementRef, private highchartsService: HighchartsService) {}
+
+  updateGraph() {
+    this.highchartsService.updateChart();
+  }
 
   ngAfterContentInit() {
     const ctx: any = this.elementRef.nativeElement.querySelector('.highcharts-container');
-    this.chartService.initChart(ctx);
+    this.highchartsService.initChart(ctx);
   }
 }

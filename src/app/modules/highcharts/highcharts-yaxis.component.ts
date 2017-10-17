@@ -10,57 +10,57 @@ export class HighchartsYAxisComponent implements AfterContentInit, OnDestroy {
 
   @Input()
   set id(value: string) {
-    this.YAxis.id = value;
+    this._yAxis.id = value;
   }
 
   @Input()
   set visible(value: boolean) {
-    this.YAxis.visible = value;
+    this._yAxis.visible = value;
   }
 
   @Input()
   set ceiling(value: number){
-    this.YAxis.ceiling = value;
+    this._yAxis.ceiling = value;
   }
 
   @Input()
   set floor(value: number){
-    this.YAxis.floor = value;
+    this._yAxis.floor = value;
   }
 
   @Input()
   set breakStart(value: number) {
-    this.YAxis.breaks[0].from = value;
+    this._yAxisBreak.from = value;
   }
 
   @Input()
   set breakEnd(value: number) {
-    this.YAxis.breaks[0].to = value;
+    this._yAxisBreak.to = value;
   }
 
   @Input()
   set breakSize(value: number) {
-    this.YAxis.breaks[0].breakSize = value;
+    this._yAxisBreak.breakSize = value;
   }
 
   @Input()
-  set categories(array: Array<any>) {
-    this.YAxis.categories = array;
+  set categories(array: any[]) {
+    this._yAxis.categories = array;
   }
 
   @Input()
   set label(value: string){
-    this.YAxis.title.text = value;
+    this._yAxisTitle.text = value;
   }
 
-  private YAxis: Highcharts.AxisOptions = {
-    title: {}
-  };
+  private _yAxis: Highcharts.AxisOptions = {};
+  private _yAxisBreak: Highcharts.AxisBreak = {};
+  private _yAxisTitle: Highcharts.AxisTitle = {};
 
   constructor(private highchartsService: HighchartsService) {}
 
   ngAfterContentInit() {
-    this.highchartsService.yAxis(this.YAxis);
+    this.highchartsService.yAxis(this._yAxis, this._yAxisBreak, this._yAxisTitle);
   }
 
   ngOnDestroy() {

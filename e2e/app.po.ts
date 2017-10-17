@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class Angular.CharjsPage {
+export class Angular.HighchartsPage {
   navigateTo() {
     return browser.get('/');
   }

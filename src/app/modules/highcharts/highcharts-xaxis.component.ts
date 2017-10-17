@@ -10,60 +10,57 @@ export class HighchartsXAxisComponent implements AfterContentInit, OnDestroy {
 
   @Input()
   set id(value: string) {
-    this.XAxis.id = value;
+    this._xAxis.id = value;
   }
 
   @Input()
   set visible(value: boolean) {
-    this.XAxis.visible = value;
+    this._xAxis.visible = value;
   }
 
   @Input()
   set ceiling(value: number){
-    this.XAxis.ceiling = value;
+    this._xAxis.ceiling = value;
   }
 
   @Input()
   set floor(value: number){
-    this.XAxis.floor = value;
+    this._xAxis.floor = value;
   }
 
   @Input()
   set breakStart(value: number) {
-    this.XAxis.breaks[0].from = value;
+    this._xAxisBreak.from = value;
   }
 
   @Input()
   set breakEnd(value: number) {
-    this.XAxis.breaks[0].to = value;
+    this._xAxisBreak.to = value;
   }
 
   @Input()
   set breakSize(value: number) {
-    this.XAxis.breaks[0].breakSize = value;
+    this._xAxisBreak.breakSize = value;
   }
 
   @Input()
-  set categories(array: Array<any>) {
-    this.XAxis.categories = array;
+  set categories(array: any[]) {
+    this._xAxis.categories = array;
   }
 
   @Input()
   set label(value: string){
-    this.XAxis.title.text = value;
+    this._xAxisTitle.text = value;
   }
 
-  private XAxis: Highcharts.AxisOptions;
+  private _xAxis: Highcharts.AxisOptions = {};
+  private _xAxisBreak: Highcharts.AxisBreak = {};
+  private _xAxisTitle: Highcharts.AxisTitle = {};
 
-  constructor(private highchartsService: HighchartsService) {
-    this.XAxis = {
-      title: {},
-      breaks: [{}]
-    };
-  }
+  constructor(private highchartsService: HighchartsService) {}
 
   ngAfterContentInit() {
-    this.highchartsService.xAxis(this.XAxis);
+    this.highchartsService.xAxis(this._xAxis, this._xAxisBreak, this._xAxisTitle);
   }
 
   ngOnDestroy() {

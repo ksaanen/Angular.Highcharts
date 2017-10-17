@@ -1,10 +1,10 @@
-import { Angular.CharjsPage } from './app.po';
+import { Angular.HighchartsPage } from './app.po';
 
-describe('angular.charjs App', () => {
-  let page: Angular.CharjsPage;
+describe('angular.highcharts App', () => {
+  let page: Angular.HighchartsPage;
 
   beforeEach(() => {
-    page = new Angular.CharjsPage();
+    page = new Angular.HighchartsPage();
   });
 
   it('should display message saying app works', () => {

@@ -44,6 +44,12 @@ export class HighchartsDataComponent implements OnInit, OnDestroy {
     this.seriesObject.name = value;
   }
 
+  @Input()
+  set visible(value: boolean) {
+    this.seriesObject.visible = value;
+    this.highchartsService.updateChart();
+  }
+
   private seriesObject: Highcharts.SeriesOptions;
 
   constructor(private highchartsService: HighchartsService) {
