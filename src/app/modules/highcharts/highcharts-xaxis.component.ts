@@ -60,7 +60,9 @@ export class HighchartsXAxisComponent implements AfterContentInit, OnDestroy {
   constructor(private highchartsService: HighchartsService) {}
 
   ngAfterContentInit() {
-    this.highchartsService.xAxis(this._xAxis, this._xAxisBreak, this._xAxisTitle);
+    this.highchartsService.xAxis = this._xAxis;
+    this.highchartsService.xAxisBreak = this._xAxisBreak;
+    this.highchartsService.xAxisTitle = this._xAxisTitle;
   }
 
   ngOnDestroy() {

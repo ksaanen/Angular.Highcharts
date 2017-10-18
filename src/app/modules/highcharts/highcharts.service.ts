@@ -3,42 +3,76 @@ import * as Highcharts from 'highcharts';
 
 @Injectable()
 export class HighchartsService {
-  private chartObject: Highcharts.ChartObject;
-  private options: Highcharts.Options = {};
-  private series: Object[] = [];
+
+  private _chartObject: Highcharts.ChartObject;
+  private _options: Highcharts.Options = {};
+  private _series: Object[] = [];
 
   initChart(ctx: string) {
-    if (this.chartObject) {
-      this.chartObject.redraw();
+    if (this._chartObject) {
+      this._chartObject.update(this.options);
     }
-    this.chartObject = new Highcharts.Chart(ctx, this.getOptions());
+    this._chartObject = new Highcharts.Chart(ctx, this.options);
   }
 
-  xAxis(xAxe: Highcharts.AxisOptions, _xAxisBreak?: Highcharts.AxisBreak, _xAxisTitle?: Highcharts.AxisTitle) {
-    this.options.xAxis = xAxe;
-    if (_xAxisBreak) {
-      this.options.xAxis.breaks = [_xAxisBreak];
-    }
-    if (_xAxisTitle) {
-      this.options.xAxis.title = _xAxisTitle;
-    }
+  get options(){
+    return this._options;
+  }
+
+  get xAxis() {
+    return this.options.xAxis;
+  }
+
+  get yAxis() {
+    return this.options.yAxis;
+  }
+
+  set xAxis(value: Highcharts.AxisOptions) {
+    this.options.xAxis = value;
     this.updateChart();
   }
 
-  yAxis(yAxe: Highcharts.AxisOptions, _yAxisBreak?: Highcharts.AxisBreak, _yAxisTitle?: Highcharts.AxisTitle) {
-    this.options.yAxis = yAxe;
-    if (_yAxisBreak) {
-      this.options.yAxis.breaks = [_yAxisBreak];
-    }
-    if (_yAxisTitle) {
-      this.options.yAxis.title = _yAxisTitle;
-    }
+  set yAxis(value: Highcharts.AxisOptions) {
+    this.options.yAxis = value;
     this.updateChart();
+  }
+
+  set title(value: Highcharts.TitleOptions) {
+    this.options.title = value;
+    this.updateChart();
+  }
+
+  set xAxisBreak(value: Highcharts.AxisBreak) {
+    this.xAxis.breaks = [value];
+    this.updateChart();
+  }
+
+  set yAxisBreak(value: Highcharts.AxisBreak) {
+    this.yAxis.breaks = [value];
+    this.updateChart();
+  }
+
+  set xAxisTitle(value: Highcharts.AxisTitle) {
+    this.xAxis.title = value;
+    this.updateChart();
+  }
+
+  set yAxisTitle(value: Highcharts.AxisTitle) {
+    this.yAxis.title = value;
+    this.updateChart();
+  }
+
+  set config(value: Highcharts.Options) {
+    Object.assign(this.options, value);
+  }
+
+  get series(){
+    return this.options.series;
   }
 
   addSerie(seriesObject: Highcharts.SeriesOptions) {
-    this.series.push(seriesObject);
-    this.options.series = this.series;
+    this._series.push(seriesObject);
+    this.options.series = this._series;
     this.updateChart();
   }
 
@@ -51,23 +85,10 @@ export class HighchartsService {
     this.updateChart();
   }
 
-  set config(value: Highcharts.Options) {
-    Object.assign(this.options, value);
-  }
-
-  set title(value: Highcharts.TitleOptions) {
-    this.options.title = value;
-    this.updateChart();
-  }
-
   updateChart() {
-    if (this.chartObject) {
-      this.chartObject.redraw();
+    if (this._chartObject) {
+      this._chartObject.update(this.options);
     }
-  }
-
-  getOptions() {
-    return this.options;
   }
 
 }

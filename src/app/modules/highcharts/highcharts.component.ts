@@ -18,18 +18,20 @@ export class HighchartsComponent implements AfterContentInit {
   }
 
   @Input()
-  set title(value: Highcharts.TitleOptions) {
-    this.highchartsService.title = value;
+  set titleText(value: string){
+    this._title.text = value;
   }
+
+  private _title: Highcharts.TitleOptions = {};
 
   constructor(private elementRef: ElementRef, private highchartsService: HighchartsService) {}
 
-  updateGraph() {
-    this.highchartsService.updateChart();
-  }
-
   ngAfterContentInit() {
+
+    this.highchartsService.title = this._title;
+
     const ctx: any = this.elementRef.nativeElement.querySelector('.highcharts-container');
     this.highchartsService.initChart(ctx);
+
   }
 }

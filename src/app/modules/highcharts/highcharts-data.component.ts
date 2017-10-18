@@ -50,10 +50,9 @@ export class HighchartsDataComponent implements OnInit, OnDestroy {
     this.highchartsService.updateChart();
   }
 
-  private seriesObject: Highcharts.SeriesOptions;
+  private seriesObject: Highcharts.SeriesOptions = {};
 
   constructor(private highchartsService: HighchartsService) {
-    this.seriesObject = {};
   }
 
   ngOnInit() {
