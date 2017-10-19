@@ -62,4 +62,5 @@ export class HighchartsDataComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.highchartsService.removeSerie(this.seriesObject);
   }
+
 }

@@ -8,64 +8,70 @@ import { HighchartsService } from './highcharts.service';
 
 export class HighchartsYAxisComponent implements AfterContentInit, OnDestroy {
 
+  private _title: Highcharts.AxisTitle = {};
+  private _breaks: Highcharts.AxisBreak = {};
+  private _axis: Highcharts.AxisOptions = {
+    title: this._title,
+    breaks: [this._breaks]
+  };
+
+  constructor(private highchartsService: HighchartsService) {}
+
+  get yAxis() {
+    return this._axis;
+  }
+
   @Input()
   set id(value: string) {
-    this._yAxis.id = value;
+    this._axis.id = value;
   }
 
   @Input()
   set visible(value: boolean) {
-    this._yAxis.visible = value;
+    this._axis.visible = value;
   }
 
   @Input()
   set ceiling(value: number){
-    this._yAxis.ceiling = value;
+    this._axis.ceiling = value;
   }
 
   @Input()
   set floor(value: number){
-    this._yAxis.floor = value;
-  }
-
-  @Input()
-  set breakStart(value: number) {
-    this._yAxisBreak.from = value;
-  }
-
-  @Input()
-  set breakEnd(value: number) {
-    this._yAxisBreak.to = value;
-  }
-
-  @Input()
-  set breakSize(value: number) {
-    this._yAxisBreak.breakSize = value;
+    this._axis.floor = value;
   }
 
   @Input()
   set categories(array: any[]) {
-    this._yAxis.categories = array;
+    this._axis.categories = array;
+  }
+
+  @Input()
+  set breakStart(value: number) {
+    this._breaks.from = value;
+  }
+
+  @Input()
+  set breakEnd(value: number) {
+    this._breaks.to = value;
+  }
+
+  @Input()
+  set breakSize(value: number) {
+    this._breaks.breakSize = value;
   }
 
   @Input()
   set label(value: string){
-    this._yAxisTitle.text = value;
+    this._title.text = value;
   }
 
-  private _yAxis: Highcharts.AxisOptions = {};
-  private _yAxisBreak: Highcharts.AxisBreak = {};
-  private _yAxisTitle: Highcharts.AxisTitle = {};
-
-  constructor(private highchartsService: HighchartsService) {}
-
   ngAfterContentInit() {
-    this.highchartsService.yAxis = this._yAxis;
-    this.highchartsService.yAxisBreak = this._yAxisBreak;
-    this.highchartsService.yAxisTitle = this._yAxisTitle;
+    this.highchartsService.yAxis = this.yAxis;
   }
 
   ngOnDestroy() {
-    // this.highchartsService.removeXAxis(this.YAxis);
+    // this.highchartsService.removeXAxis(this.XAxis);
   }
+
 }

@@ -12,26 +12,29 @@ require('highcharts/modules/broken-axis.js')(Highcharts);
 })
 export class HighchartsComponent implements AfterContentInit {
 
+  private _title: Highcharts.TitleOptions = {};
+
+  constructor(private elementRef: ElementRef, private highchartsService: HighchartsService) {}
+
   @Input()
   set config(value: Highcharts.Options) {
     this.highchartsService.config = value;
   }
 
   @Input()
-  set titleText(value: string){
+  set titleText(value: string) {
     this._title.text = value;
   }
 
-  private _title: Highcharts.TitleOptions = {};
-
-  constructor(private elementRef: ElementRef, private highchartsService: HighchartsService) {}
+  updateChart() {
+    this.highchartsService.updateChart();
+  }
 
   ngAfterContentInit() {
-
     this.highchartsService.title = this._title;
 
     const ctx: any = this.elementRef.nativeElement.querySelector('.highcharts-container');
     this.highchartsService.initChart(ctx);
-
   }
+
 }

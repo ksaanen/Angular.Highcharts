@@ -19,14 +19,6 @@ export class HighchartsService {
     return this._options;
   }
 
-  get xAxis() {
-    return this.options.xAxis;
-  }
-
-  get yAxis() {
-    return this.options.yAxis;
-  }
-
   set xAxis(value: Highcharts.AxisOptions) {
     this.options.xAxis = value;
     this.updateChart();
@@ -42,32 +34,12 @@ export class HighchartsService {
     this.updateChart();
   }
 
-  set xAxisBreak(value: Highcharts.AxisBreak) {
-    this.xAxis.breaks = [value];
-    this.updateChart();
-  }
-
-  set yAxisBreak(value: Highcharts.AxisBreak) {
-    this.yAxis.breaks = [value];
-    this.updateChart();
-  }
-
-  set xAxisTitle(value: Highcharts.AxisTitle) {
-    this.xAxis.title = value;
-    this.updateChart();
-  }
-
-  set yAxisTitle(value: Highcharts.AxisTitle) {
-    this.yAxis.title = value;
-    this.updateChart();
-  }
-
   set config(value: Highcharts.Options) {
     Object.assign(this.options, value);
   }
 
-  get series(){
-    return this.options.series;
+  set series(value: Object[]){
+    this.options.series = value;
   }
 
   addSerie(seriesObject: Highcharts.SeriesOptions) {
