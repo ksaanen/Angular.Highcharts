@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, AfterContentInit } from '@angular/core';
+import { Component, Input, ElementRef, OnInit } from '@angular/core';
 import { HighchartsService } from './highcharts.service';
 import * as Highcharts from 'highcharts';
 
@@ -10,7 +10,7 @@ require('highcharts/modules/broken-axis.js')(Highcharts);
   template: '<div class="highcharts-container"></div>',
   providers: [HighchartsService]
 })
-export class HighchartsComponent implements AfterContentInit {
+export class HighchartsComponent implements OnInit {
 
   private _title: Highcharts.TitleOptions = {};
 
@@ -30,9 +30,8 @@ export class HighchartsComponent implements AfterContentInit {
     this.highchartsService.updateChart();
   }
 
-  ngAfterContentInit() {
+  ngOnInit() {
     this.highchartsService.title = this._title;
-
     const ctx: any = this.elementRef.nativeElement.querySelector('.highcharts-container');
     this.highchartsService.initChart(ctx);
   }

@@ -6,12 +6,8 @@ export class HighchartsService {
 
   private _chartObject: Highcharts.ChartObject;
   private _options: Highcharts.Options = {};
-  private _series: Object[] = [];
 
   initChart(ctx: string) {
-    if (this._chartObject) {
-      this._chartObject.update(this.options);
-    }
     this._chartObject = new Highcharts.Chart(ctx, this.options);
   }
 
@@ -42,24 +38,28 @@ export class HighchartsService {
     this.options.series = value;
   }
 
-  addSerie(seriesObject: Highcharts.SeriesOptions) {
-    this._series.push(seriesObject);
-    this.options.series = this._series;
-    this.updateChart();
+  addSerie(seriesObject: Highcharts.IndividualSeriesOptions) {
+    this._chartObject.addSeries(seriesObject);
+    this.redrawChart();
   }
 
-  removeSerie(seriesObject: Highcharts.SeriesOptions) {
-    const index = this.series.indexOf(seriesObject);
-    if (index > -1) {
-      this.series.splice(index, 1);
+  removeSerie(seriesObject: Highcharts.SeriesObject) {
+    for (let s of this._chartObject.series) {
+      if (s.name === seriesObject.name) {
+        s.remove(true);
+      }
     }
-    this.options.series = this.series;
-    this.updateChart();
   }
 
   updateChart() {
     if (this._chartObject) {
       this._chartObject.update(this.options);
+    }
+  }
+
+  redrawChart() {
+    if (this._chartObject) {
+      this._chartObject.redraw();
     }
   }
 

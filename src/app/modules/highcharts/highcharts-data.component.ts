@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnDestroy } from '@angular/core';
+import { Component, Input, AfterContentInit, OnDestroy, OnChanges } from '@angular/core';
 import { HighchartsService } from './highcharts.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { HighchartsService } from './highcharts.service';
   template: ' '
 })
 
-export class HighchartsDataComponent implements OnInit, OnDestroy {
+export class HighchartsDataComponent implements AfterContentInit, OnDestroy, OnChanges {
 
   @Input()
   set type(value: string) {
@@ -25,7 +25,6 @@ export class HighchartsDataComponent implements OnInit, OnDestroy {
 
   @Input()
   set stack(value: string) {
-    this.seriesObject.stacking = 'normal';
     this.seriesObject.stack = value;
   }
 
@@ -50,17 +49,21 @@ export class HighchartsDataComponent implements OnInit, OnDestroy {
     this.highchartsService.updateChart();
   }
 
-  private seriesObject: Highcharts.SeriesOptions = {};
+  private seriesObject: Highcharts.IndividualSeriesOptions = {};
 
   constructor(private highchartsService: HighchartsService) {
   }
 
-  ngOnInit() {
+  ngAfterContentInit() {
     this.highchartsService.addSerie(this.seriesObject);
   }
 
   ngOnDestroy() {
     this.highchartsService.removeSerie(this.seriesObject);
+  }
+
+  ngOnChanges() {
+    this.highchartsService.updateChart();
   }
 
 }
