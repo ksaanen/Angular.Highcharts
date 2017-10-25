@@ -43,6 +43,16 @@ export class HighchartsService {
     this.redrawChart();
   }
 
+  updateSerie(seriesObject: Highcharts.IndividualSeriesOptions) {
+    if (this._chartObject.series) {
+      for (let s of this._chartObject.series) {
+        if (s.name === seriesObject.name) {
+          s.update({data: seriesObject.data}, true);
+        }
+      }
+    }
+  }
+
   removeSerie(seriesObject: Highcharts.IndividualSeriesOptions) {
     for (let s of this._chartObject.series) {
       if (s.name === seriesObject.name) {

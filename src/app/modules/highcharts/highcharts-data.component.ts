@@ -1,4 +1,4 @@
-import { Component, Input, AfterContentInit, OnDestroy, OnChanges } from '@angular/core';
+import { Component, Input, AfterContentInit, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
 import { HighchartsService } from './highcharts.service';
 
 @Component({
@@ -62,8 +62,10 @@ export class HighchartsDataComponent implements AfterContentInit, OnDestroy, OnC
     this.highchartsService.removeSerie(this.seriesObject);
   }
 
-  ngOnChanges() {
-    this.highchartsService.updateChart();
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.data) {
+      this.highchartsService.updateSerie(this.seriesObject);
+    }
   }
 
 }
